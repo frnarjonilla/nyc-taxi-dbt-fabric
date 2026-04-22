@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Get Metadata1",
+        "type": "GetMetadata",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "fieldList": [],
+          "datasetSettings": {
+            "annotations": [],
+            "connectionSettings": {
+              "name": "wh_taxis_dbt",
+              "properties": {
+                "annotations": [],
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "endpoint": "usarqm4davbe7gchl23zafqspq-lulgvhbjahsezf6pst6ht3nwua.datawarehouse.fabric.microsoft.com",
+                  "artifactId": "a5d9648b-8a0b-4982-84f7-0a5325b109cd",
+                  "workspaceId": "9c6a165d-0129-4ce4-97cf-94fc79edb6a0"
+                },
+                "externalReferences": {
+                  "connection": "5db04c25-c390-464c-bcf4-c2dd18e0209e"
+                }
+              }
+            },
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "typeProperties": {}
+          }
+        }
+      }
+    ]
+  }
+}
