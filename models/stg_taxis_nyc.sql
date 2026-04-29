@@ -33,7 +33,7 @@ WITH trip_data AS (
         CAST(total_amount AS FLOAT) AS importe_total,
         CAST(congestion_surcharge AS FLOAT) AS recargo_congestion
 
-    FROM {{ source('staging_data', 'stg_taxis_nyc') }}
+    FROM {{ source('staging_data', 'stg_taxis_raw') }}
 
     WHERE total_amount > 0 
       AND trip_distance > 0 
