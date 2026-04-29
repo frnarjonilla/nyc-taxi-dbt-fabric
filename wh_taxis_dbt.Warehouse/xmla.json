@@ -1,0 +1,325 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "my_second_dbt_model",
+        "sourceLineageTag": "[dbo].[my_second_dbt_model]",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "my_second_dbt_model",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "stg_taxis_nyc",
+        "sourceLineageTag": "[dbo].[stg_taxis_nyc]",
+        "columns": [
+          {
+            "name": "proveedor_id",
+            "dataType": "int64",
+            "sourceColumn": "proveedor_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "proveedor_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "fecha_recogida",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha_recogida",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "fecha_recogida",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "fecha_dejada",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha_dejada",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "fecha_dejada",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "numero_pasajeros",
+            "dataType": "int64",
+            "sourceColumn": "numero_pasajeros",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "numero_pasajeros",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "distancia_viaje",
+            "dataType": "double",
+            "sourceColumn": "distancia_viaje",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "distancia_viaje",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "tarifa_id",
+            "dataType": "int64",
+            "sourceColumn": "tarifa_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "tarifa_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "zona_recogida_id",
+            "dataType": "int64",
+            "sourceColumn": "zona_recogida_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "zona_recogida_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "zona_dejada_id",
+            "dataType": "int64",
+            "sourceColumn": "zona_dejada_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "zona_dejada_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "tipo_pago",
+            "dataType": "int64",
+            "sourceColumn": "tipo_pago",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "tipo_pago",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "importe_tarifa",
+            "dataType": "double",
+            "sourceColumn": "importe_tarifa",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "importe_tarifa",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "impuesto_mta",
+            "dataType": "double",
+            "sourceColumn": "impuesto_mta",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "impuesto_mta",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "importe_propina",
+            "dataType": "double",
+            "sourceColumn": "importe_propina",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "importe_propina",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "importe_total",
+            "dataType": "double",
+            "sourceColumn": "importe_total",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "importe_total",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "recargo_congestion",
+            "dataType": "double",
+            "sourceColumn": "recargo_congestion",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "recargo_congestion",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "stg_taxis_nyc",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

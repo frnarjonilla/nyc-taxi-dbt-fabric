@@ -1,0 +1,301 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "GetMetadata",
+        "typeProperties": {
+          "datasetSettings": {
+            "type": "Binary",
+            "typeProperties": {
+              "location": {
+                "type": "DatasetLocation",
+                "folderPath": "documents/Dataset taxis/Pendientes"
+              }
+            },
+            "externalReferences": {
+              "connection": "01b9938d-6d53-46c4-a1b8-3b4c6d65564e"
+            },
+            "annotations": []
+          },
+          "fieldList": [
+            "childItems"
+          ],
+          "storeSettings": {
+            "type": "StoreReadSettings",
+            "recursive": true,
+            "enablePartitionDiscovery": false
+          },
+          "formatSettings": {
+            "type": "BinaryReadSettings"
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Leer archivos de sharepoint",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "v_nombre_archivo",
+          "value": {
+            "value": "@activity('Leer archivos de sharepoint').output.childItems[0].name",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Nombre archivo",
+        "dependsOn": [
+          {
+            "activity": "Leer archivos de sharepoint",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "StoreReadSettings",
+              "recursive": false,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "DatasetLocation",
+                  "folderPath": "Documents/Dataset taxis/Pendientes",
+                  "fileName": {
+                    "value": "@variables('v_nombre_archivo')",
+                    "type": "Expression"
+                  }
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "01b9938d-6d53-46c4-a1b8-3b4c6d65564e"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "applyVOrder": true,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "",
+                "table": "stg_taxis_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "NYC_Taxi_Staging",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "b055a308-e43c-931a-4944-9f51d0b569d7",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Ingesta",
+        "dependsOn": [
+          {
+            "activity": "Nombre archivo",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "StoreReadSettings",
+              "recursive": false,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "DatasetLocation",
+                  "folderPath": "Documents/Dataset taxis/Pendientes",
+                  "fileName": {
+                    "value": "@variables('v_nombre_archivo')",
+                    "type": "Expression"
+                  }
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "01b9938d-6d53-46c4-a1b8-3b4c6d65564e"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DelimitedTextSink",
+            "formatSettings": {
+              "type": "DelimitedTextWriteSettings",
+              "fileExtension": ".txt"
+            },
+            "storeSettings": {
+              "type": "SharePointOnlineFileWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "DatasetLocation",
+                  "folderPath": "Documents/Dataset taxis/Procesados",
+                  "fileName": {
+                    "value": "@variables('v_nombre_archivo')",
+                    "type": "Expression"
+                  }
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "01b9938d-6d53-46c4-a1b8-3b4c6d65564e"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Mover a procesados",
+        "dependsOn": [
+          {
+            "activity": "Ingesta",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Delete",
+        "typeProperties": {
+          "enableLogging": false,
+          "datasetSettings": {
+            "type": "Binary",
+            "typeProperties": {
+              "location": {
+                "type": "DatasetLocation",
+                "folderPath": "Documents/Dataset taxis/Pendientes",
+                "fileName": {
+                  "value": "@variables('v_nombre_archivo')",
+                  "type": "Expression"
+                }
+              }
+            },
+            "externalReferences": {
+              "connection": "01b9938d-6d53-46c4-a1b8-3b4c6d65564e"
+            },
+            "annotations": []
+          },
+          "storeSettings": {
+            "type": "StoreReadSettings",
+            "recursive": false,
+            "enablePartitionDiscovery": false
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Delete data1",
+        "dependsOn": [
+          {
+            "activity": "Mover a procesados",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "variables": {
+      "v_nombre_archivo": {
+        "type": "String"
+      }
+    }
+  }
+}
