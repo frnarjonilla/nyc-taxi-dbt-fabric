@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: staging_data
+    database: NYC_Taxi_Staging  # <--- El nombre del Warehouse de entrada
+    schema: dbo
+    tables:
+      - name: stg_taxis_raw  # <--- El nombre de la tabla
+      
