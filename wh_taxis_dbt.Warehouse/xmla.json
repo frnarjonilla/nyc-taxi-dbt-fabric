@@ -13,6 +13,87 @@
     "sourceQueryCulture": "en-US",
     "tables": [
       {
+        "name": "dim_zones_SL",
+        "sourceLineageTag": "[dbo].[dim_zones_SL]",
+        "columns": [
+          {
+            "name": "zona_id",
+            "dataType": "int64",
+            "sourceColumn": "zona_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "zona_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "distrito",
+            "dataType": "string",
+            "sourceColumn": "distrito",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "distrito",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nombre_zona",
+            "dataType": "string",
+            "sourceColumn": "nombre_zona",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "nombre_zona",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "zona_servicio",
+            "dataType": "string",
+            "sourceColumn": "zona_servicio",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "zona_servicio",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "dim_zones_SL",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "my_second_dbt_model",
         "sourceLineageTag": "[dbo].[my_second_dbt_model]",
         "columns": [
