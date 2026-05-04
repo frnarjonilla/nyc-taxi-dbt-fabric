@@ -20,7 +20,7 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "Invoke pipeline1",
+        "name": "Ingesta",
         "dependsOn": []
       },
       {
@@ -42,10 +42,10 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "Invoke pipeline2",
+        "name": "Transformacion",
         "dependsOn": [
           {
-            "activity": "Invoke pipeline1",
+            "activity": "Ingesta",
             "dependencyConditions": [
               "Succeeded"
             ]

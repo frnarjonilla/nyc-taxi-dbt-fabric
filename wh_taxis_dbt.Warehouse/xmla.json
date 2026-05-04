@@ -13,6 +13,148 @@
     "sourceQueryCulture": "en-US",
     "tables": [
       {
+        "name": "dim_calendario",
+        "sourceLineageTag": "[dbo].[dim_calendario]",
+        "columns": [
+          {
+            "name": "fecha",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "fecha",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "anio",
+            "dataType": "int64",
+            "sourceColumn": "anio",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "anio",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "mes",
+            "dataType": "int64",
+            "sourceColumn": "mes",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "mes",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "dia",
+            "dataType": "int64",
+            "sourceColumn": "dia",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "dia",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "trimestre",
+            "dataType": "int64",
+            "sourceColumn": "trimestre",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "trimestre",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "semana",
+            "dataType": "int64",
+            "sourceColumn": "semana",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "semana",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nombre_mes",
+            "dataType": "string",
+            "sourceColumn": "nombre_mes",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "nombre_mes",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nombre_dia",
+            "dataType": "string",
+            "sourceColumn": "nombre_dia",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "nombre_dia",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "dim_calendario",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "dim_zones_SL",
         "sourceLineageTag": "[dbo].[dim_zones_SL]",
         "columns": [
@@ -81,6 +223,279 @@
             "source": {
               "type": "entity",
               "entityName": "dim_zones_SL",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "fact_taxi_viajes",
+        "sourceLineageTag": "[dbo].[fact_taxi_viajes]",
+        "columns": [
+          {
+            "name": "fecha_id",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha_id",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "fecha_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pickup_zona_id",
+            "dataType": "int64",
+            "sourceColumn": "pickup_zona_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "pickup_zona_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "dropoff_zona_id",
+            "dataType": "int64",
+            "sourceColumn": "dropoff_zona_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "dropoff_zona_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "codigo_pago_id",
+            "dataType": "double",
+            "sourceColumn": "codigo_pago_id",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "codigo_pago_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "proveedor_id",
+            "dataType": "int64",
+            "sourceColumn": "proveedor_id",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "proveedor_id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "numero_pasajeros",
+            "dataType": "double",
+            "sourceColumn": "numero_pasajeros",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "numero_pasajeros",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "distancia_viaje",
+            "dataType": "double",
+            "sourceColumn": "distancia_viaje",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "distancia_viaje",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "importe_tarifa",
+            "dataType": "double",
+            "sourceColumn": "importe_tarifa",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "importe_tarifa",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "importe_propina",
+            "dataType": "double",
+            "sourceColumn": "importe_propina",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "importe_propina",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "importe_total",
+            "dataType": "double",
+            "sourceColumn": "importe_total",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "importe_total",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "recargo_congestion",
+            "dataType": "double",
+            "sourceColumn": "recargo_congestion",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "recargo_congestion",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "impuesto_mta",
+            "dataType": "double",
+            "sourceColumn": "impuesto_mta",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "impuesto_mta",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "duracion_minutos",
+            "dataType": "int64",
+            "sourceColumn": "duracion_minutos",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "duracion_minutos",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "fecha_recogida",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha_recogida",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "fecha_recogida",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "fecha_dejada",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha_dejada",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "fecha_dejada",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "fact_taxi_viajes",
               "expressionSource": "DatabaseQuery",
               "schemaName": "dbo"
             }
