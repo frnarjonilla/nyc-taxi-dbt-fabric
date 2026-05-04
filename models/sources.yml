@@ -9,4 +9,4 @@ sources:
         columns:
           - name: fecha_carga_sistema
             description: "Fecha técnica de inserción en el sistema"
-          - name: dim_taxi_zones_raw  # <--- La tabla del Notebook
+      - name: dim_taxi_zones_raw  # <--- La tabla del Notebook
