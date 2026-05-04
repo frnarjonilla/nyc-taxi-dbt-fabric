@@ -421,6 +421,59 @@
             "value": "False"
           }
         ]
+      },
+      {
+        "name": "tipos_pago",
+        "sourceLineageTag": "[dbo].[tipos_pago]",
+        "columns": [
+          {
+            "name": "codigo_pago",
+            "dataType": "int64",
+            "sourceColumn": "codigo_pago",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "codigo_pago",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "descripcion_pago",
+            "dataType": "string",
+            "sourceColumn": "descripcion_pago",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "descripcion_pago",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "tipos_pago",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
       }
     ],
     "expressions": [
