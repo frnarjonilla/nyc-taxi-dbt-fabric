@@ -2,7 +2,7 @@
   config(
     materialized='incremental',
     unique_key='id_unico',
-    incremental_strategy='append' -- La más rápida para Fabric
+    incremental_strategy='append'
   )
 }}
 
