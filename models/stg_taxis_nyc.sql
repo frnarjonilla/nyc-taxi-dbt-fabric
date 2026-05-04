@@ -2,12 +2,16 @@
   config(
     materialized='incremental',
     unique_key='id_unico'
+    incremental_strategy='append' -- La más rápida para Fabric
   )
 }}
 
 WITH trip_data AS (
     SELECT 
         CONCAT(VendorID, '_', tpep_pickup_datetime) AS id_unico,
+
+        -- IMPORTANTE: Traemos la nueva columna técnica
+        CAST(fecha_carga_sistema AS DATETIME2(6)) AS fecha_carga_sistema,
 
         -- Identificadores y fechas
         CAST(VendorID AS INT) AS proveedor_id,
@@ -28,7 +32,7 @@ WITH trip_data AS (
         CAST(fare_amount AS FLOAT) AS importe_tarifa,
         CAST(mta_tax AS FLOAT) AS impuesto_mta,
         CAST(tip_amount AS FLOAT) AS importe_propina,
-        CAST(total_amount AS FLOAT) AS importe_total, -- Aquí estaba el error con el '17.16'
+        CAST(total_amount AS FLOAT) AS importe_total,
         CAST(congestion_surcharge AS FLOAT) AS recargo_congestion
 
     FROM {{ source('staging_data', 'stg_taxis_raw') }}
@@ -39,9 +43,10 @@ WITH trip_data AS (
       AND CAST(passenger_count AS FLOAT) > 0
 
     {% if is_incremental() %}
-      AND tpep_pickup_datetime > (SELECT MAX(fecha_recogida) FROM {{ this }})
+      -- Cambiamos el filtro: Ahora comparamos contra la fecha de carga
+      -- Esto permite que entren viajes antiguos si se cargaron hoy
+      AND fecha_carga_sistema > (SELECT MAX(fecha_carga_sistema) FROM {{ this }})
     {% endif %}
 )
 
-SELECT * 
-FROM trip_data
+SELECT * FROM trip_data
