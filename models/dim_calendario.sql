@@ -1,34 +1,31 @@
 {{ config(materialized='table') }}
 
-with fechas as (
-    {{ dbt_utils.date_spine(
-        datepart="day",
-        start_date="cast('2020-01-01' as date)",
-        end_date="cast('2026-12-31' as date)"
-    ) }}
-),
-
-final as (
-    select
-        cast(date_day as date) as fecha,
-        year(date_day) as anio,
-        month(date_day) as mes,
-        day(date_day) as dia,
-        datepart(quarter, date_day) as trimestre,
-        datepart(week, date_day) as semana,
-        -- Traducción de nombres de mes a español
-        case month(date_day)
-            when 1 then 'Enero' when 2 then 'Febrero' when 3 then 'Marzo' 
-            when 4 then 'Abril' when 5 then 'Mayo' when 6 then 'Junio'
-            when 7 then 'Julio' when 8 then 'Agosto' when 9 then 'Septiembre' 
-            when 10 then 'Octubre' when 11 then 'Noviembre' when 12 then 'Diciembre'
-        end as nombre_mes,
-        -- Día de la semana (1 es Domingo o Lunes según config, pero sacamos el nombre)
-        case datepart(weekday, date_day)
-            when 1 then 'Domingo' when 2 then 'Lunes' when 3 then 'Martes' 
-            when 4 then 'Miércoles' when 5 then 'Jueves' when 6 then 'Viernes' when 7 then 'Sábado'
-        end as nombre_dia
-    from fechas
+WITH RegistroFechas AS (
+    -- Definimos el inicio y el fin del calendario
+    SELECT CAST('2020-01-01' AS DATE) AS fecha
+    UNION ALL
+    SELECT DATEADD(day, 1, fecha)
+    FROM RegistroFechas
+    WHERE fecha < '2026-12-31'
 )
-
-select * from final
+SELECT
+    fecha,
+    YEAR(fecha) AS anio,
+    MONTH(fecha) AS mes,
+    DAY(fecha) AS dia,
+    DATEPART(QUARTER, fecha) AS trimestre,
+    DATEPART(WEEK, fecha) AS semana,
+    -- Nombres en español
+    CASE MONTH(fecha)
+        WHEN 1 THEN 'Enero' WHEN 2 THEN 'Febrero' WHEN 3 THEN 'Marzo' 
+        WHEN 4 THEN 'Abril' WHEN 5 THEN 'Mayo' WHEN 6 THEN 'Junio'
+        WHEN 7 THEN 'Julio' WHEN 8 THEN 'Agosto' WHEN 9 THEN 'Septiembre' 
+        WHEN 10 THEN 'Octubre' WHEN 11 THEN 'Noviembre' WHEN 12 THEN 'Diciembre'
+    END AS nombre_mes,
+    CASE DATEPART(WEEKDAY, fecha)
+        WHEN 1 THEN 'Domingo' WHEN 2 THEN 'Lunes' WHEN 3 THEN 'Martes' 
+        WHEN 4 THEN 'Miércoles' WHEN 5 THEN 'Jueves' WHEN 6 THEN 'Viernes' WHEN 7 THEN 'Sábado'
+    END AS nombre_dia
+FROM RegistroFechas
+-- Importante: Fabric necesita esto para recursiones de más de 100 días
+OPTION (MAXRECURSION 0)
