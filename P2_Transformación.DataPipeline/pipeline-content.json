@@ -2,19 +2,24 @@
   "properties": {
     "activities": [
       {
-        "name": "dbt job1",
         "type": "InvokeDataBuildToolJob",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
-        "dependsOn": [],
+        "typeProperties": {
+          "dataBuildToolJobId": "de50476b-6dfe-a9bf-4591-0ad47496b596",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "threads": 4
+        },
+        "externalReferences": {
+          "connection": "bf941be6-f017-4a1c-b65f-c2e117fb16ed"
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
-        "typeProperties": {}
+        "name": "dbt job1",
+        "dependsOn": []
       }
     ]
   }
