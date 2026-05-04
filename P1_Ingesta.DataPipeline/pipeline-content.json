@@ -70,6 +70,15 @@
             "formatSettings": {
               "type": "DelimitedTextReadSettings"
             },
+            "additionalColumns": [
+              {
+                "name": "fecha_carga_sistema",
+                "value": {
+                  "value": "@utcnow()",
+                  "type": "Expression"
+                }
+              }
+            ],
             "storeSettings": {
               "type": "StoreReadSettings",
               "recursive": false,
@@ -100,7 +109,7 @@
           },
           "sink": {
             "type": "LakehouseTableSink",
-            "tableActionOption": "Append",
+            "tableActionOption": "OverwriteSchema",
             "applyVOrder": true,
             "partitionOption": "None",
             "datasetSettings": {
@@ -127,6 +136,216 @@
           },
           "translator": {
             "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "VendorID",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "VendorID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "tpep_pickup_datetime",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "tpep_pickup_datetime",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "tpep_dropoff_datetime",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "tpep_dropoff_datetime",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "passenger_count",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "passenger_count",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "trip_distance",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "trip_distance",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "RatecodeID",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "RatecodeID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "store_and_fwd_flag",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "store_and_fwd_flag",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "PULocationID",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "PULocationID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "DOLocationID",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "DOLocationID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "payment_type",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "payment_type",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "fare_amount",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "fare_amount",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "extra",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "extra",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "mta_tax",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "mta_tax",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "tip_amount",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "tip_amount",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "tolls_amount",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "tolls_amount",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "improvement_surcharge",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "improvement_surcharge",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "total_amount",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "total_amount",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "congestion_surcharge",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "congestion_surcharge",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "fecha_carga_sistema",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "fecha_carga_sistema",
+                  "physicalType": "string"
+                }
+              }
+            ],
             "typeConversion": true,
             "typeConversionSettings": {
               "allowDataTruncation": true,

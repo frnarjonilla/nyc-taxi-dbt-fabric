@@ -56,6 +56,35 @@
         "sourceLineageTag": "[dbo].[stg_taxis_nyc]",
         "columns": [
           {
+            "name": "id_unico",
+            "dataType": "string",
+            "sourceColumn": "id_unico",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "id_unico",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "fecha_carga_sistema",
+            "dataType": "dateTime",
+            "sourceColumn": "fecha_carga_sistema",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "fecha_carga_sistema",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
             "name": "proveedor_id",
             "dataType": "int64",
             "sourceColumn": "proveedor_id",
@@ -102,16 +131,19 @@
           },
           {
             "name": "numero_pasajeros",
-            "dataType": "int64",
+            "dataType": "double",
             "sourceColumn": "numero_pasajeros",
-            "formatString": "0",
-            "sourceProviderType": "int",
+            "sourceProviderType": "float",
             "sourceLineageTag": "numero_pasajeros",
             "summarizeBy": "sum",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ]
           },
@@ -135,16 +167,19 @@
           },
           {
             "name": "tarifa_id",
-            "dataType": "int64",
+            "dataType": "double",
             "sourceColumn": "tarifa_id",
-            "formatString": "0",
-            "sourceProviderType": "int",
+            "sourceProviderType": "float",
             "sourceLineageTag": "tarifa_id",
             "summarizeBy": "sum",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ]
           },
@@ -180,16 +215,19 @@
           },
           {
             "name": "tipo_pago",
-            "dataType": "int64",
+            "dataType": "double",
             "sourceColumn": "tipo_pago",
-            "formatString": "0",
-            "sourceProviderType": "int",
+            "sourceProviderType": "float",
             "sourceLineageTag": "tipo_pago",
             "summarizeBy": "sum",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ]
           },
