@@ -1,0 +1,7 @@
+codigo_pago,descripcion_pago
+1,Tarjeta de crédito
+2,Efectivo
+3,Sin cargo
+4,Disputa
+5,Desconocido
+6,Viaje anulado
