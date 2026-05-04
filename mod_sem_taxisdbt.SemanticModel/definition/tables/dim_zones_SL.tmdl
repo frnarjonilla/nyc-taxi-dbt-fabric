@@ -1,0 +1,48 @@
+table dim_zones_SL
+	lineageTag: 6cefac0d-bb0f-407e-b60c-3647e6f3dbf5
+	sourceLineageTag: [dbo].[dim_zones_SL]
+
+	column zona_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ea6541f-a0bf-4ff1-a6a3-76e3d19bc7ad
+		sourceLineageTag: zona_id
+		summarizeBy: none
+		sourceColumn: zona_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column distrito
+		dataType: string
+		lineageTag: dbdaeae0-8166-4713-a67e-1de2f6d73d6f
+		sourceLineageTag: distrito
+		summarizeBy: none
+		sourceColumn: distrito
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombre_zona
+		dataType: string
+		lineageTag: 04306a5f-6e27-4057-b329-75572be972d5
+		sourceLineageTag: nombre_zona
+		summarizeBy: none
+		sourceColumn: nombre_zona
+
+		annotation SummarizationSetBy = Automatic
+
+	column zona_servicio
+		dataType: string
+		lineageTag: 3e35bae4-5ff6-4a68-a16d-b5f201ef7d52
+		sourceLineageTag: zona_servicio
+		summarizeBy: none
+		sourceColumn: zona_servicio
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_zones_SL = entity
+		mode: directLake
+		source
+			entityName: dim_zones_SL
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_taxis_dbt'
+

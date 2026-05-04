@@ -1,0 +1,32 @@
+table tipos_pago
+	lineageTag: 18e2e48b-1af9-42c1-ab85-8afd959ee65e
+	sourceLineageTag: [dbo].[tipos_pago]
+
+	column codigo_pago
+		dataType: int64
+		formatString: 0
+		lineageTag: bbff42cb-bee4-4821-b003-fb83c734085f
+		sourceLineageTag: codigo_pago
+		summarizeBy: none
+		sourceColumn: codigo_pago
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	column descripcion_pago
+		dataType: string
+		lineageTag: 55e7c9e8-f40b-47ec-93de-9482bcd14803
+		sourceLineageTag: descripcion_pago
+		summarizeBy: none
+		sourceColumn: descripcion_pago
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tipos_pago = entity
+		mode: directLake
+		source
+			entityName: tipos_pago
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_taxis_dbt'
+

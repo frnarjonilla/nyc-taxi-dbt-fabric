@@ -1,0 +1,12 @@
+relationship 4ba1a487-74b2-1c18-754d-d250f3ef13f4
+	fromColumn: fact_taxi_viajes.fecha_id
+	toColumn: dim_calendario.fecha
+
+relationship 0bc3f02b-7377-f3dc-bc09-6cdc60d43c0c
+	fromColumn: fact_taxi_viajes.pickup_zona_id
+	toColumn: dim_zones_SL.zona_id
+
+relationship 3035733c-6a2f-9876-b1da-9817b1c3e55a
+	fromColumn: fact_taxi_viajes.codigo_pago_id
+	toColumn: tipos_pago.codigo_pago
+

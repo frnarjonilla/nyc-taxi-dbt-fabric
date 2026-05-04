@@ -1,0 +1,173 @@
+table fact_taxi_viajes
+	lineageTag: 3d49ca81-cd08-4fbd-bf96-118a71ebca16
+	sourceLineageTag: [dbo].[fact_taxi_viajes]
+
+	column fecha_id
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ac807b92-9155-4d5a-a25d-6a6aee6a4d4a
+		sourceLineageTag: fecha_id
+		summarizeBy: none
+		sourceColumn: fecha_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_zona_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c0a0997-965e-4a30-a369-facd71ddc954
+		sourceLineageTag: pickup_zona_id
+		summarizeBy: none
+		sourceColumn: pickup_zona_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropoff_zona_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 88af96bd-372b-4ed8-8bf6-c4429b6fa520
+		sourceLineageTag: dropoff_zona_id
+		summarizeBy: sum
+		sourceColumn: dropoff_zona_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column codigo_pago_id
+		dataType: int64
+		lineageTag: bf3acd20-4fe3-4382-b7dd-3507186042fe
+		sourceLineageTag: codigo_pago_id
+		summarizeBy: none
+		sourceColumn: codigo_pago_id
+
+		changedProperty = SummarizeBy
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column proveedor_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 38b7affb-fb95-460d-9f13-4fb5974de94e
+		sourceLineageTag: proveedor_id
+		summarizeBy: sum
+		sourceColumn: proveedor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column numero_pasajeros
+		dataType: double
+		lineageTag: 0f16c16d-e6f0-4a7e-a993-998b10f1de0e
+		sourceLineageTag: numero_pasajeros
+		summarizeBy: sum
+		sourceColumn: numero_pasajeros
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column distancia_viaje
+		dataType: double
+		lineageTag: 86477220-91d5-4ffd-99b8-3549a0838072
+		sourceLineageTag: distancia_viaje
+		summarizeBy: sum
+		sourceColumn: distancia_viaje
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column importe_tarifa
+		dataType: double
+		lineageTag: d37c0a72-6a00-45ef-95dc-9b3620c1c104
+		sourceLineageTag: importe_tarifa
+		summarizeBy: sum
+		sourceColumn: importe_tarifa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column importe_propina
+		dataType: double
+		lineageTag: ea6540f2-e1b7-4a94-bdbe-84ad59d34c43
+		sourceLineageTag: importe_propina
+		summarizeBy: sum
+		sourceColumn: importe_propina
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column importe_total
+		dataType: double
+		lineageTag: b8e30cb0-aee8-44b3-929f-12bb2892f7eb
+		sourceLineageTag: importe_total
+		summarizeBy: sum
+		sourceColumn: importe_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recargo_congestion
+		dataType: double
+		lineageTag: 6cccd183-820a-4a03-a6a9-50d1fb35b4d4
+		sourceLineageTag: recargo_congestion
+		summarizeBy: sum
+		sourceColumn: recargo_congestion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column impuesto_mta
+		dataType: double
+		lineageTag: 4c6bdb19-3750-4ad6-8e88-1169023691a9
+		sourceLineageTag: impuesto_mta
+		summarizeBy: sum
+		sourceColumn: impuesto_mta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column duracion_minutos
+		dataType: int64
+		formatString: 0
+		lineageTag: f250e8e0-d2e9-4c79-9580-a475d315c49e
+		sourceLineageTag: duracion_minutos
+		summarizeBy: sum
+		sourceColumn: duracion_minutos
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha_recogida
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4f8f6c59-a1b5-4f93-be46-ef195cdca89c
+		sourceLineageTag: fecha_recogida
+		summarizeBy: none
+		sourceColumn: fecha_recogida
+
+		annotation SummarizationSetBy = Automatic
+
+	column fecha_dejada
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ca7589bf-f2c6-4dce-9a8b-c642b99e586a
+		sourceLineageTag: fecha_dejada
+		summarizeBy: none
+		sourceColumn: fecha_dejada
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_taxi_viajes = entity
+		mode: directLake
+		source
+			entityName: fact_taxi_viajes
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_taxis_dbt'
+

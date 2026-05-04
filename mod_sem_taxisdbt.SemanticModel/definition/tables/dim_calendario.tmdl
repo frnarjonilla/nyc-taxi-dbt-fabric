@@ -1,0 +1,89 @@
+table dim_calendario
+	lineageTag: 9cc28470-ef5f-4b11-9eba-5af474629087
+	sourceLineageTag: [dbo].[dim_calendario]
+
+	column fecha
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0554c148-5298-4a1b-964a-53f830359a6a
+		sourceLineageTag: fecha
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column anio
+		dataType: int64
+		formatString: 0
+		lineageTag: 43ecbc01-89df-45ef-9282-47c0102bfcf6
+		sourceLineageTag: anio
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 79e2bf2b-b7c4-4e31-b662-28b6fe808520
+		sourceLineageTag: mes
+		summarizeBy: none
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 0185e6d2-555c-45bb-b78b-e4be3b4876d4
+		sourceLineageTag: dia
+		summarizeBy: none
+		sourceColumn: dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: ad89b47e-5a4b-46c0-bc54-bc4db29857f6
+		sourceLineageTag: trimestre
+		summarizeBy: none
+		sourceColumn: trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column semana
+		dataType: int64
+		formatString: 0
+		lineageTag: ccc9d55d-550f-4ef2-a35a-1abf6e5cc485
+		sourceLineageTag: semana
+		summarizeBy: none
+		sourceColumn: semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombre_mes
+		dataType: string
+		lineageTag: 3b9db81e-518d-469e-ab7f-727dac44aa8c
+		sourceLineageTag: nombre_mes
+		summarizeBy: none
+		sourceColumn: nombre_mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombre_dia
+		dataType: string
+		lineageTag: 38c88f65-8ac5-446f-8325-40444c384d0d
+		sourceLineageTag: nombre_dia
+		summarizeBy: none
+		sourceColumn: nombre_dia
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_calendario = entity
+		mode: directLake
+		source
+			entityName: dim_calendario
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_taxis_dbt'
+

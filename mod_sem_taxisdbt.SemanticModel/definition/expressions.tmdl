@@ -1,0 +1,11 @@
+expression 'DirectLake - wh_taxis_dbt' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/9c6a165d-0129-4ce4-97cf-94fc79edb6a0/a5d9648b-8a0b-4982-84f7-0a5325b109cd", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 15d40441-ab6e-4a91-8638-4cc7cc163d1e
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[stg_taxis_nyc]"}},"objectType":"Table"}]
+
