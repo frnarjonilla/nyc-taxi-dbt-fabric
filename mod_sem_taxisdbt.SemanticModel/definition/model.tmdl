@@ -16,4 +16,5 @@ ref table fact_taxi_viajes
 ref table tipos_pago
 ref table dim_calendario
 ref table dim_zones_SL
+ref table metrica_dummy
 

@@ -1,0 +1,21 @@
+table metrica_dummy
+	lineageTag: c0d0a9a8-f474-4df1-ae21-06454c4d395e
+	sourceLineageTag: [dbo].[metrica_dummy]
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 88b6b6e6-06f8-4aa3-a8e6-3ee4cc46be76
+		sourceLineageTag: id
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition metrica_dummy = entity
+		mode: directLake
+		source
+			entityName: metrica_dummy
+			schemaName: dbo
+			expressionSource: 'DirectLake - wh_taxis_dbt'
+
