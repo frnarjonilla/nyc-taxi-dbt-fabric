@@ -4,11 +4,14 @@ table metrica_dummy
 
 	column id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 88b6b6e6-06f8-4aa3-a8e6-3ee4cc46be76
 		sourceLineageTag: id
 		summarizeBy: sum
 		sourceColumn: id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
