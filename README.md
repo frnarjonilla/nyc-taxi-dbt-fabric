@@ -27,6 +27,4 @@ El proyecto sigue una **Arquitectura de Medallón**:
 4. Ejecutar `dbt seed` y `dbt run`.
 
 ---
-*Proyecto creado como parte de un pipeline de Ingeniería de Datos.*
-*Proyecto en construcción*
->>>>>>> 111f235d001c6846f862aee5884da67b164da4fe
+* Proyecto terminado
