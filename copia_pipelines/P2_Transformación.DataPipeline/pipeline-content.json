@@ -9,7 +9,7 @@
           "threads": 4
         },
         "externalReferences": {
-          "connection": "bf941be6-f017-4a1c-b65f-c2e117fb16ed"
+          "connection": ""
         },
         "policy": {
           "timeout": "0.12:00:00",
