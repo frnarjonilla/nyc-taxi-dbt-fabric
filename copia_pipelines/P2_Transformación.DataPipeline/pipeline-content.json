@@ -4,7 +4,7 @@
       {
         "type": "InvokeDataBuildToolJob",
         "typeProperties": {
-          "dataBuildToolJobId": "de50476b-6dfe-a9bf-4591-0ad47496b596",
+          "dataBuildToolJobId": "",
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "threads": 4
         },
