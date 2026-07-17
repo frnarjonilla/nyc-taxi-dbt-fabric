@@ -12,7 +12,7 @@
         "type": "DataWarehouse",
         "typeProperties": {
           "workspaceId": "6e3f563c-9b86-46f8-9fd2-4ebebbc7b41b",
-          "artifactId": "9baef7f5-0139-4c6f-a269-f4df01be5ef6",
+          "artifactId": "",
           "endPoint": "oefwgmxtjkhelood33rsrfpuli-hrld63ugtp4enh6sj27lxr5udm.datawarehouse.fabric.microsoft.com"
         }
       }
