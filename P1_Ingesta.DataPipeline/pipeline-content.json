@@ -124,7 +124,7 @@
                 "properties": {
                   "type": "Lakehouse",
                   "typeProperties": {
-                    "artifactId": "b055a308-e43c-931a-4944-9f51d0b569d7",
+                    "artifactId": "",
                     "workspaceId": "00000000-0000-0000-0000-000000000000",
                     "rootFolder": "Tables"
                   },
