@@ -11,7 +11,7 @@
           "operationType": "InvokeFabricPipeline"
         },
         "externalReferences": {
-          "connection": "8ffc5b24-fd4b-487d-a6f1-584988911303"
+          "connection": ""
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -33,7 +33,7 @@
           "operationType": "InvokeFabricPipeline"
         },
         "externalReferences": {
-          "connection": "8ffc5b24-fd4b-487d-a6f1-584988911303"
+          "connection": ""
         },
         "policy": {
           "timeout": "0.12:00:00",
