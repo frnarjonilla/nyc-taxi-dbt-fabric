@@ -56,8 +56,8 @@
         "type": "PBISemanticModelRefresh",
         "typeProperties": {
           "method": "post",
-          "groupId": "",
-          "datasetId": "",
+          "groupId": "9c6a165d-0129-4ce4-97cf-94fc79edb6a0",
+          "datasetId": "208c351a-4e5e-4dbb-bf65-2e60a9bc0a99",
           "commitMode": "Transactional",
           "objects": [
             {
