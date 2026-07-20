@@ -11,7 +11,7 @@ WITH trip_data AS (
         CONCAT(VendorID, '_', tpep_pickup_datetime) AS id_unico,
 
         -- IMPORTANTE: Traemos la nueva columna técnica
-        CAST(CURRENT_TIMESTAMP AS DATETIME2) AS fecha_carga_sistema,
+        CAST(CURRENT_TIMESTAMP AS DATETIME2(6)) AS fecha_carga_sistema,
 
         -- Identificadores y fechas
         CAST(VendorID AS INT) AS proveedor_id,
