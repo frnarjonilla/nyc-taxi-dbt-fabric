@@ -6,6 +6,7 @@ sources:
     schema: dbo
     tables:
       - name: BR_Taxis  # <--- El nombre de la tabla
+      - name: stg_taxis_raw
         columns:
           - name: fecha_carga_sistema
             description: "Fecha técnica de inserción en el sistema"
