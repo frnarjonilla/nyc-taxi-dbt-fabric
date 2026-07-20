@@ -28,7 +28,7 @@ WITH trip_data AS (
         CAST(DOLocationID AS INT) AS zona_dejada_id,
         
         -- Costes (Asegúrate de que TODOS sean FLOAT)
-        CAST(payment_type AS FLOAT) AS tipo_pago,
+        CAST(payment_type AS INT) AS tipo_pago,
         CAST(fare_amount AS FLOAT) AS importe_tarifa,
         CAST(mta_tax AS FLOAT) AS impuesto_mta,
         CAST(tip_amount AS FLOAT) AS importe_propina,
