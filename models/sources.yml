@@ -5,7 +5,7 @@ sources:
     database: NYC_Taxi_Staging  # <--- El nombre del Warehouse de entrada
     schema: dbo
     tables:
-      - name: stg_taxis_raw  # <--- El nombre de la tabla
+      - name: BR_Taxis  # <--- El nombre de la tabla
         columns:
           - name: fecha_carga_sistema
             description: "Fecha técnica de inserción en el sistema"
